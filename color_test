@@ -1,5 +1,5 @@
-int windowX = 255;
-int windowY = 255;
+int windowX = 800;
+int windowY = 600;
 int[] r = new int[windowX];
 int[] g = new int[windowX];
 int[] b = new int[windowX];
@@ -14,7 +14,7 @@ void setup(){
   background(0,0,0);
   size(windowX, windowY);
   noStroke();
-  frameRate(190);
+  frameRate(120);
 
 } // END SETUP
 
@@ -38,7 +38,7 @@ void draw(){
        } if(r_c < 255 && g_c == 0 && b_c == 255){
          r_c += 1;
          debug = 6;
-       } if(r_c == 255 && g_c == 0 && b_c < 255){
+       } if(r_c == 255 && g_c == 0){
          b_c -= 1;
          debug = 7;
        }
