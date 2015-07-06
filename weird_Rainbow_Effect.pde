@@ -10,6 +10,10 @@ int g_c = 0;
 int b_c = 0;
 int counterX = 1;
 int counterY = 1;
+long tStart = System.currentTimeMillis();
+long tEnd = System.currentTimeMillis();
+long tDelta = tEnd - tStart;
+double elapsedSeconds = tDelta / 1000.0;
 
 void setup(){
   background(0,0,0);
@@ -20,6 +24,11 @@ void setup(){
 } // END SETUP
 
 void draw(){
+  tEnd = System.currentTimeMillis(); // Counts seconds
+  tDelta = tEnd - tStart;
+  elapsedSeconds = tDelta / 1000.0;
+  //println((int)elapsedSeconds);
+  
     if(counterX < windowX){
        //Coloring (complete brainfuck)
        if (r_c == 255 && g_c < 255 && b_c == 0){
@@ -46,6 +55,7 @@ void draw(){
   fill(0,0,0);
   rect(0,windowY-77,100,80); // clears previous draw of text
   fill(255,255,255);
+  text("Time Elapsed: "+(int)elapsedSeconds+"s",0,windowY-65);
   text("FPS: "+(int)frameRate,0,windowY-47);
   text("X: "+counterX,0,windowY-30);
   text("Y: "+counterY,0,windowY-10);
