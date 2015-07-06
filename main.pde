@@ -1,32 +1,46 @@
-int windowX = 255;
-int windowY = 255;
-int[] r = new int[windowX];
-int[] g = new int[windowX];
-int[] b = new int[windowX];
+// Made by VOX, 2015
+
+int windowX = 800; // Window Size (Width)
+int windowY = 600; // Window Size (Height)
+int step = 5; // Steps(pixels) in color range
+int FPS = 60; //Speed of process (can depend on system speed)
+boolean continuous = true; // IF YOU WANT CONTINUOUS CHANGING RAINBOW (DEFAULT = ON/true)
+
 int r_c = 255;
 int g_c = 0;
 int b_c = 0;
 int counter = 1;
-int i = 0;
 
 void setup(){
   background(0,0,0);
   size(windowX, windowY);
   noStroke();
-  frameRate(60);
+  frameRate(FPS);
 
 } // END SETUP
 
 void draw(){
     if(counter < windowX){
-       if (r_c > 255){
-         r_c -= 1;
-       } else if (r_c > 255){
-         _c -= 1;
+       //Coloring (complete brainfuck)
+       if (r_c == 255 && g_c < 255 && b_c == 0){
+         g_c += step;
+       } if(g_c == 255 && r_c > 0){
+         r_c -= step;
+       } if(r_c == 0 && b_c == 255 && g_c < 255){
+         g_c -= step;
+       } if(r_c == 0 && g_c == 255 && b_c < 255){
+         b_c += step;
+       } if(r_c == 0 && g_c > 0 && b_c == 255){
+         g_c -= step;
+       } if(r_c < 255 && g_c == 0 && b_c == 255){
+         r_c += step;
+       } if(r_c == 255 && g_c == 0){
+         b_c -= step;
        }
-       fill(r[i],g[i],b[i]);
-       rect(counter++,1,1,windowY);
+       // end coloring
+       fill(r_c,g_c,b_c);
+       rect(counter++,1,2,windowY);
        counter++;
-    }
+    } else{ if(continuous == true) { counter = 1; } } 
 
 } // END DRAW
