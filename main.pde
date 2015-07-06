@@ -1,7 +1,7 @@
 // Made by VOX, 2015
 
-int windowX = 800; // Window Size (Width)
-int windowY = 600; // Window Size (Height)
+int windowX = 800; // Window Size (Width), default 800px
+int windowY = 600; // Window Size (Height), default 600px
 int step = 5; // Steps(pixels) in color range
 int FPS = 60; //Speed of process (can depend on system speed)
 boolean continuous = true; // IF YOU WANT CONTINUOUS CHANGING RAINBOW (DEFAULT = ON/true)
