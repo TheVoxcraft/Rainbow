@@ -8,27 +8,44 @@ int g_c = 0;
 int b_c = 0;
 int counter = 1;
 int i = 0;
+int debug = 0;
 
 void setup(){
   background(0,0,0);
   size(windowX, windowY);
   noStroke();
-  frameRate(60);
+  frameRate(190);
 
 } // END SETUP
 
 void draw(){
-       if (r_c == 255){
+        //Coloring (complete brainfuck)
+       if (r_c == 255 && g_c < 255 && b_c == 0){
          g_c += 1;
-       } else if(g_c == 255 && ){
+         debug = 1;
+       } if(g_c == 255 && r_c > 0){
          r_c -= 1;
-       } else if(r_c == 0){
-         b_c += 1;
-       } else if(b_c == 255){
+         debug = 2;
+       } if(r_c == 0 && b_c == 255 && g_c < 255){
          g_c -= 1;
+         debug = 3;
+       } if(r_c == 0 && g_c == 255 && b_c < 255){
+         b_c += 1;
+         debug = 4;
+       } if(r_c == 0 && g_c > 0 && b_c == 255){
+         g_c -= 1;
+         debug = 5;
+       } if(r_c < 255 && g_c == 0 && b_c == 255){
+         r_c += 1;
+         debug = 6;
+       } if(r_c == 255 && g_c == 0 && b_c < 255){
+         b_c -= 1;
+         debug = 7;
        }
-       fill(r_c,g_c,b_c);
-       rect(1,1,windowX,windowY);
-       counter++;
+       // end coloring
+       
+       println(debug); // debug
+       fill(r_c,g_c,b_c); //fill coloring
+       rect(1,1,windowX,windowY); // draws
 
 } // END DRAW
